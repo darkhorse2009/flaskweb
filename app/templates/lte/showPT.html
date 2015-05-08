@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% import "main/blocks.html" as blocks %}
+{% block main %}
+    <article class="module width_full">
+        <header>
+            <h3 class="tabs_involved">参数统计</h3>
+            <ul class="tabs">
+                <li><a href="#PT_LTE">LTE</a></li>
+                <li><a href="#PT_1X">1X</a></li>
+                <li><a href="#PT_DO">DO</a></li>
+            </ul>
+        </header>
+        <div class="tab_container">
+            <div id="PT_LTE" class="tab_content">
+                <table class="tablesorter table-condensed table-hover" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>表名</th>
+                            <th>最大数</th>
+                            <th>其他</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+{% endblock %}

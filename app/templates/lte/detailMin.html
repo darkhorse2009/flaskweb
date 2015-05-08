@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% import "main/blocks.html" as blocks %}
+{% block main %}
+    <article class="module width_full">
+        <header>
+            <h3 class="tabs_involved">参数记录</h3>
+            <ul class="tabs">
+                <li><a href="{{ url_for('lteBlueprint.lteCategories') }}">LTE</a></li>
+            </ul>
+        </header>
+        <div class="tab_container">
+            <div id="detailMin" class="tab_content">
+                <table class="tablesorter" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            {% for row in minAllField %}
+                                <th>{{ row }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in minAllRecord %}
+                            <tr>
+                                <td></td>
+                                {% for item in row %}
+                                    <td>{{ item }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {{ blocks.pager(url_for('lteBlueprint.detailMin',tableName=tableName), p.total, p.limit, p.curr_page) }}
+            </div>
+        </div>
+    </article>
+{% endblock %}

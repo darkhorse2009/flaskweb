@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% import "main/blocks.html" as blocks %}
+{% block main %}
+    <article class="module width_quarter">
+        <header>
+            <h3 class="tabs_involved">配置表</h3>
+        </header>
+        <div class="message_list">
+            <div class="module_content">
+                <ul class="nav nav-list">
+                    {% for row in allTableNames %}
+                        <li><a href="{{ url_for('lteBlueprint.showTableProfile', tableName=row) }}">{{ row }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <form action="{{ url_for('lteBlueprint.updateProfileValue', tableName=tableName) }}" method="POST">
+        <article class="module width_3_quarter">
+            <header>
+                <h3 class="tabs_involved">详细</h3>
+                <ul class="tabs">
+                    <input class="btn btn-default" type="submit" value="保存">
+                </ul>
+            </header>
+            <div class="message_list">
+                <div class="module_content">
+                    {% for row in tableValues %}
+                        <div class="message">
+                            <lable>
+                                {% if row in workingFields %}
+                                    <input type="checkbox" name="option1" id="{{ row }}" value="{{ row }} " checked=True>{{ row }}
+                                {% else %}
+                                    <input type="checkbox" name="option1" id="{{ row }}" value="{{ row }}" >{{ row }}
+                                {% endif %}
+                            </lable>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </article>
+    </form>
+{% endblock %}

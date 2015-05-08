@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% import "main/blocks.html" as blocks %}
+{% block main %}
+    <article class="module width_quarter">
+        <header>
+            <h3 class="tabs_involved">配置表</h3>
+        </header>
+        <div class="message_list">
+            <div class="module_content">
+                <ul class="nav nav-list">
+                    {% for row in allTableNames %}
+                        <li><a href="{{ url_for('lteBlueprint.showTableProfile', tableName=row) }}">{{ row }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% import 'main/blocks.html' as blocks %}
+{% block main %}
+    <article class="module width_full">
+        <header>
+            <h3 class="tabs_involved">统计</h3>
+            <ul class="tabs">
+                <li><a href="#categories_LTE">LTE</a></li>
+            </ul>
+        </header>
+        <div class="tab_container">
+            <div id="categories_LTE" class="tab_content">
+                <table class="tablesorter" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>表名</th>
+                            <th>相同数</th>
+                            <th>不同数</th>
+                            <th>编辑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in categories %}
+                            <tr>
+                                <td></td>
+                                <td>{{ row[0] }}</td>
+                                <td><a href="{{ url_for('lteBlueprint.detailMax', tableName=row[0]) }}">{{ row[1] }}</a></td>
+                                <td><a href="{{ url_for('lteBlueprint.detailMin', tableName=row[0]) }}">{{ row[2] }}</a></td>
+                                <td>
+                                    <input type="image" src="{{url_for('static', filename='images/icn_edit.png')}}" title="Edit" onclick=location.assign("{{ url_for('lteBlueprint.editProfileTable', tableName=row[0]) }}")>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            {{ blocks.pager(url_for('lteBlueprint.lteCategories'), p.total, p.limit, p.curr_page) }}
+            </div>
+        </div>
+    </article>
+{% endblock %}

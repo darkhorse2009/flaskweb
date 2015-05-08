@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8"/>
+    <!--<h1>Hello</h1>-->
+    {% include 'main/_headtitle.html' %}
+    {% include 'main/_headercss.html' %}
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        {% include 'main/_navbar.html' %}
+    </nav>
+
+    <aside id="sidebar" class="column">
+        {% include 'main/_sidebar.html' %}
+    </aside>
+    {% include 'main/_script.html' %}
+    <section id="main" class="column">
+        {% block main %}
+        {% endblock %}
+    </section>
+</body>
+</html>

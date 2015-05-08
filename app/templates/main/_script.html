@@ -1,0 +1,42 @@
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/docs.min.js')}}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{{url_for('static', filename='js/ie10-viewport-bug-workaround.js')}}"></script>
+<script src="{{url_for('static', filename='js/hideshow.js')}}"></script>
+<script src="{{url_for('static', filename='js/jquery.tablesorter.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/jquery.equalHeight.js')}}"></script>
+<script src="{{url_for('static', filename='js/highcharts.js')}}"></script>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="{{url_for('static', filename='js/bootstrap-paginator.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".tablesorter").tablesorter();
+   	 });
+    $(document).ready(function() {
+	    //When page loads...
+//    $("#post_new_article").hide();
+	    $(".tab_content").hide(); //Hide all content
+	    $("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	    $(".tab_content:first").show(); //Show first tab content
+
+	    //On Click Event
+	    $("ul.tabs li").click(function() {
+    		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+	    	$(this).addClass("active"); //Add "active" class to selected tab
+		    $(".tab_content").hide(); //Hide all tab content
+		    var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		    $(activeTab).fadeIn(); //Fade in the active ID content
+		    return false;
+	    });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+	    $('.column').equalHeight();
+	  });
+</script>

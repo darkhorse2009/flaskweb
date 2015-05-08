@@ -1,0 +1,50 @@
+    <form action="" method="POST">
+    <header>
+      <h3>
+          {% if table_selected %}
+            {{ table_selected }}
+          {% else %}
+            详情
+          {% endif %}
+      </h3>
+    </header>
+    <div class="message_list">
+      <div class="module_content">
+        {% if d_keys %}
+            {% for item in (d_keys.values()|list)[0][3:] %}
+                <div class="message">
+                  <label>
+                    {% if select_keys==None %}
+                        <input type="checkbox" name="option1" id="{{ item }}" value="{{ item }}" >{{ item }}
+                    {% elif item in select_keys.split(',') %}
+                        <input type="checkbox" name="option1" id="{{ item }}" value="{{ item }}" checked=True >{{ item }}
+                    {% else %}
+                        <input type="checkbox" name="option1" id="{{ item }}" value="{{ item }}" >{{ item }}
+                    {% endif %}
+                  </label>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="message">
+              <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+              <p><strong>John Doe</strong></p>
+            </div>
+            <div class="message">
+              <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+              <p><strong>John Doe</strong></p>
+            </div>
+            <div class="message">
+              <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+              <p><strong>John Doe</strong></p>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+    <footer>
+        <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+        {% if d_keys %}
+            <input type="submit" class="btn_post_message" value="" onclick=location.assign("{{ url_for('main.showPT', tablename=(d_keys.keys()|list)[0])}}") >
+        {% endif %}
+    </footer>
+    </form>
+
